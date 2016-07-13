@@ -60,29 +60,26 @@ function game($dat){
     }
 }
 
-$urlm ="http://www.picsearch.com/index.cgi?q=".conv($pick);
+$urlm ="http://www.picsearch.com/index.cgi?q=".conv($pick);//benim seçimim
 
-$url = "http://www.picsearch.com/index.cgi?q=".conv($name);
+$url = "http://www.picsearch.com/index.cgi?q=".conv($name);//pc nin seçimi
 
-$data = file_get_contents($url);
+$mydata =file_get_contents($urlm);//benim seçimim
 
-$mydata =file_get_contents($urlm);
+$data = file_get_contents($url);// pc seçimi
 
-function getir($baslangic, $son, $cekilmek_istenen)
-{
-    @preg_match_all('/' . preg_quote($baslangic, '/') .
-        '(.*?)'. preg_quote($son, '/').'/i', $cekilmek_istenen, $m);
-    return @$m[1];
-}
+
+
+
 
 $title =explode('<img class="thumbnail" src="',$data);
-$title =explode('" alt="" data-width="299" data-height="224" id="QvERz0TT57RVcohjT-P_95N8X0UggslkzM_Aizknv2o" />',$title[1]);
+$titla =explode('" alt="" data-width="290" data-height="224" id="QvERz0TT57RVcohjT-P_95N8X0UggslkzM_Aizknv2o" />',$title[1]);
 
-$testa = $title[0];
+$testa = $titla[0];
 
 
-$link =explode('<img class="thumbnail" src="',$data);
-$linka=explode('" alt="" data-width="299" data-height="224" id="QvERz0TT57RVcohjT-P_95N8X0UggslkzM_Aizknv2o" />',$link[1]);
+$link =explode('<img class="thumbnail" src="',$mydata);
+$linka=explode('" alt="" data-width="290" data-height="224" id="QvERz0TT57RVcohjT-P_95N8X0UggslkzM_Aizknv2o" />',$link[1]);
 
 $test =$linka[0];
 
@@ -91,8 +88,9 @@ $test =$linka[0];
  ?>
 <br/>
 <FORM><INPUT Type="button" VALUE="TRY AGAİN" onClick="history.go(-1);return true;"></FORM
-<br/>   <img src="<?php echo $test ?>" alt="Rules" style="width:276px;height:183px;"> <img src="<?php echo $testa ?>" alt="Rules" style="width:276px;height:183px;">
-
+<br/>   <img src="<?php echo $testa ?>
+<img src="http://s31.postimg.org/kmisg31rf/versus.png" alt="versus">
+<img src="<?php echo $test ?>
 </body>
 
  </html>
